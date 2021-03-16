@@ -10,6 +10,17 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    @IBAction func toggleDarkMode(_ sender: Any) {
+        let mySwitch = sender as! UISwitch
+        
+        if mySwitch.isOn {
+            view.backgroundColor = UIColor.darkGray
+        } else {
+            view.backgroundColor = UIColor.white
+        }
+    }
+    
     // Table View Delegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected row \(indexPath.row) in section \(indexPath.section)")
@@ -17,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Table View Data Source Methods
     func numberOfSections(in tableView: UITableView) -> Int {
+        tableView.backgroundColor = UIColor.clear
         return 3
     }
     
@@ -45,6 +57,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             default:
                 cell.textLabel?.text = "This shoudn't happen"
         }
+        
+        cell.backgroundColor = UIColor.clear
+        
         return cell
     }
     
